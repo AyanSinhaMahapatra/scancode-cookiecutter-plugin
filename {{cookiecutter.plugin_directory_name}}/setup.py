@@ -45,8 +45,8 @@ setup(
         'scancode-toolkit',
     ],
     entry_points={
-        'scancode_post_scan': [
-            'hello = hello_scancode.hello_scancode:SayHello',
+        '{{cookiecutter.entrypoint}}': [
+            'hello = {{cookiecutter.src_directory_name}}.{{cookiecutter.file_name}}:{{cookiecutter.class_name}}',
         ],
     }
 )

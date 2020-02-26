@@ -27,22 +27,22 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from plugincode.post_scan import PostScanPlugin
-from plugincode.post_scan import post_scan_impl
+from plugincode.{{cookiecutter.plugincode_filename}} import {{cookiecutter.scan_plugin}}
+from plugincode.{{cookiecutter.plugincode_filename}} import {{cookiecutter.pluggy_impl}}
 from scancode import CommandLineOption
-from scancode import POST_SCAN_GROUP
+from scancode import {{cookiecutter.SCAN_GROUP}}
 
-@post_scan_impl
-class SayHello(PostScanPlugin):
+@{{cookiecutter.pluggy_impl}}
+class {{cookiecutter.class_name}}({{cookiecutter.scan_plugin}}):
     """
     Illustrate a simple "Hello World" post-scan plugin.
     """
 
     options = [
-        CommandLineOption(('--hello',),
+        CommandLineOption(('{{cookiecutter.commandline_option}}',),
                                         is_flag=True, default=False,
                                         help='Generate a simple "Hello ScanCode" greeting in the terminal.',
-                                        help_group=POST_SCAN_GROUP)
+                                        help_group={{cookiecutter.SCAN_GROUP}})
     ]
 
     def is_enabled(self, hello, **kwargs):
@@ -55,4 +55,4 @@ class SayHello(PostScanPlugin):
         if not self.is_enabled(hello):
             return
 
-        print('\nHello ScanCode!!\n')
+        print('\nHello {{cookiecutter.greeting_recipient}}!!\n')
